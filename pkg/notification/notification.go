@@ -223,12 +223,19 @@ type LambdaConfig struct {
 	Lambda string `xml:"CloudFunction"`
 }
 
+// UrlConfig carries one single URL notification configuration
+type UrlConfig struct {
+	Config
+	URL string `xml:"Url"`
+}
+
 // Configuration - the struct that represents the whole XML to be sent to the web service
 type Configuration struct {
 	XMLName       xml.Name       `xml:"NotificationConfiguration"`
 	LambdaConfigs []LambdaConfig `xml:"CloudFunctionConfiguration"`
 	TopicConfigs  []TopicConfig  `xml:"TopicConfiguration"`
 	QueueConfigs  []QueueConfig  `xml:"QueueConfiguration"`
+	UrlConfigs    []UrlConfig    `xml:"SimpleNotificationConfiguration"`
 }
 
 // AddTopic adds a given topic config to the general bucket notification config
